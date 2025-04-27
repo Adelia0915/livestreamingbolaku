@@ -37,63 +37,72 @@
       font-size: 24px;
       font-weight: bold;
       border-radius: 8px;
+      margin: 0 auto;
       display: inline-block;
-      margin-top: 10px;
     }
 
-    /* Layout utama: 2 kolom */
-    .main-container {
+    /* Layout 2 kolom */
+    .main-content {
       display: flex;
-      margin: 20px;
+      justify-content: center;
+      align-items: flex-start;
+      margin: 20px auto;
+      padding: 0 10px;
+      max-width: 1200px;
       gap: 20px;
     }
 
-    /* Sidebar kiri - daftar pertandingan */
-    .sidebar {
-      width: 30%;
-      background: #fff;
+    .matches-list {
+      flex: 1;
+      background-color: #fff;
       padding: 15px;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      height: calc(100vh - 160px);
-      overflow-y: auto;
+    }
+
+    .matches-list h2 {
+      margin-top: 0;
+      font-size: 20px;
     }
 
     .match-box {
       background: #f9f9f9;
-      border: 1px solid #ccc;
-      border-radius: 5px;
+      border-left: 5px solid #2196F3;
       padding: 10px;
       margin-bottom: 15px;
-      transition: transform 0.2s, box-shadow 0.2s;
+      border-radius: 5px;
     }
 
-    .match-box:hover {
-      transform: scale(1.03);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    .match-box.liga2 {
+      border-left-color: #FF9800;
     }
 
-    .liga1 { border-left: 5px solid #2196F3; }
-    .liga2 { border-left: 5px solid #FF9800; }
-    .liga-champions { border-left: 5px solid #4CAF50; }
+    .match-box.liga-champions {
+      border-left-color: #4CAF50;
+    }
 
-    /* Konten kanan - live streaming */
-    .content {
-      width: 70%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    .live-stream {
+      flex: 2;
+      background: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .live-stream h2 {
+      margin-top: 0;
+      font-size: 20px;
     }
 
     .video-container {
-      width: 100%;
-      max-width: 800px;
-      background: #000;
-      border-radius: 8px;
-      overflow: hidden;
       position: relative;
       padding-bottom: 56.25%;
       height: 0;
+      overflow: hidden;
+      margin-top: 15px;
+      border-radius: 8px;
+      background: #000;
     }
 
     .video-container iframe {
@@ -103,6 +112,7 @@
       width: 100%;
       height: 100%;
       border: none;
+      border-radius: 8px;
     }
 
     footer {
@@ -110,22 +120,19 @@
       padding: 15px 10px;
       background-color: #222;
       color: #fff;
-      margin-top: 20px;
+      margin-top: 30px;
     }
 
-    /* Responsive */
+    /* Responsiveness */
     @media (max-width: 768px) {
-      .main-container {
+      .main-content {
         flex-direction: column;
-      }
-      .sidebar, .content {
-        width: 100%;
       }
     }
   </style>
 </head>
-
 <body>
+
   <!-- Header -->
   <header>
     <div class="logo">
@@ -137,10 +144,11 @@
     </div>
   </header>
 
-  <!-- Main -->
-  <div class="main-container">
-    <!-- Sidebar kiri -->
-    <aside class="sidebar">
+  <!-- Main 2 kolom -->
+  <div class="main-content">
+
+    <!-- Daftar pertandingan -->
+    <div class="matches-list">
       <h2>Pertandingan Lain</h2>
 
       <div class="match-box liga1">
@@ -166,15 +174,16 @@
           <li>Tim K vs Tim L - 01:00</li>
         </ul>
       </div>
-    </aside>
+    </div>
 
-    <!-- Konten kanan -->
-    <section class="content">
+    <!-- Streaming -->
+    <div class="live-stream">
       <h2>Streaming Saat Ini</h2>
       <div class="video-container">
         <iframe id="liveStream" allowfullscreen></iframe>
       </div>
-    </section>
+    </div>
+
   </div>
 
   <!-- Footer -->
@@ -186,5 +195,6 @@
     const liveStreamUrl = "https://t.ly/streamingku";
     document.getElementById('liveStream').src = liveStreamUrl;
   </script>
+  
 </body>
 </html>
