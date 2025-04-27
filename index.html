@@ -1,221 +1,219 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Live Streaming Bola</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: url('https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
-      background-size: cover;
-      line-height: 1.6;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Streaming Bola</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://images.unsplash.com/photo-1517632298121-404f5e81a1c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+            background-size: cover;
+            line-height: 1.6;
+        }
 
-    /* Lapisan overlay transparan */
-    .overlay {
-      background-color: rgba(255, 255, 255, 0.4); /* Lebih transparan */
-      min-height: 100vh;
-    }
+        /* Tambahkan lapisan transparan */
+        .overlay {
+            background-color: rgba(255, 255, 255, 0.8);
+            min-height: 100vh;
+        }
 
-    header {
-      background-color: rgba(34, 34, 34, 0.6);
-      color: #fff;
-      padding: 20px 10px;
-      text-align: center;
-      position: relative;
-    }
+        header {
+            background-color: rgba(34, 34, 34, 0.8);
+            color: #fff;
+            padding: 20px 10px;
+            text-align: center;
+            position: relative;
+        }
 
-    .logo {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 10px;
-    }
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+        }
 
-    .logo img {
-      max-height: 80px;
-      margin-right: 15px;
-    }
+        .logo img {
+            max-height: 80px;
+            margin-right: 15px;
+        }
 
-    .banner {
-      background-color: rgba(255, 204, 0, 0.7);
-      padding: 20px;
-      font-size: 24px;
-      font-weight: bold;
-      border-radius: 8px;
-      display: inline-block;
-    }
+        .banner {
+            background-color: rgba(255, 204, 0, 0.9);
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            border-radius: 8px;
+        }
 
-    .article-section {
-      max-width: 800px;
-      margin: 20px auto;
-      padding: 15px;
-      background-color: rgba(255, 255, 255, 0.5);
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
+        .article-section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
 
-    main {
-      padding: 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      gap: 20px;
-    }
+        main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-    .live-stream {
-      flex: 2;
-    }
+        .streaming-and-matches {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
 
-    .video-container {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
-      max-width: 100%;
-      background: #000;
-      margin-bottom: 30px;
-      border-radius: 8px;
-    }
+        .live-stream, .other-matches {
+            flex: 1 1 50%;
+        }
 
-    .video-container iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-      border-radius: 8px;
-    }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
+            border-radius: 8px;
+        }
 
-    .other-matches {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 8px;
+        }
 
-    .match-box {
-      background: rgba(255, 255, 255, 0.5);
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      padding: 15px;
-      transition: transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
+        .other-matches {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
 
-    .match-box:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
+        .match-box {
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 15px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
 
-    h2, h3 {
-      color: #333;
-    }
+        .match-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
 
-    .liga1 {
-      background-color: rgba(231, 243, 254, 0.5);
-      border-left: 5px solid #2196F3;
-    }
+        h2, h3 {
+            color: #333;
+        }
 
-    .liga2 {
-      background-color: rgba(255, 243, 231, 0.5);
-      border-left: 5px solid #FF9800;
-    }
+        .liga1 {
+            background-color: rgba(231, 243, 254, 0.9);
+            border-left: 5px solid #2196F3;
+        }
 
-    .liga-champions {
-      background-color: rgba(232, 245, 233, 0.5);
-      border-left: 5px solid #4CAF50;
-    }
+        .liga2 {
+            background-color: rgba(255, 243, 231, 0.9);
+            border-left: 5px solid #FF9800;
+        }
 
-    footer {
-      text-align: center;
-      padding: 15px 10px;
-      background-color: rgba(34, 34, 34, 0.6);
-      color: #fff;
-      margin-top: 30px;
-    }
+        .liga-champions {
+            background-color: rgba(232, 245, 233, 0.9);
+            border-left: 5px solid #4CAF50;
+        }
 
-    /* Responsif */
-    @media (max-width: 768px) {
-      main {
-        flex-direction: column;
-      }
-      .live-stream, .other-matches {
-        flex: 1 1 100%;
-      }
-    }
-  </style>
+        footer {
+            text-align: center;
+            padding: 15px 10px;
+            background-color: rgba(34, 34, 34, 0.8);
+            color: #fff;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .streaming-and-matches {
+                flex-direction: column;
+            }
+            .live-stream, .other-matches {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-<div class="overlay">
-  <!-- Header dengan logo dan banner -->
-  <header>
-    <div class="logo">
-      <img src="https://i.ibb.co/W4ks0RV5/fifa-removebg-preview.png" alt="Logo" />
-      <h1>Live Streaming Bola</h1>
+    <div class="overlay">
+        <header>
+            <div class="logo">
+                <img src="https://i.ibb.co/W4ks0RV5/fifa-removebg-preview.png" alt="Logo" />
+                <h1>Live Streaming Bola</h1>
+            </div>
+            <div class="banner">
+                Nikmati Siaran Langsung Pertandingan Sepak Bola Favorit Anda!
+            </div>
+        </header>
+
+        <section class="article-section">
+            <h2>Selamat Datang di Situs Streaming Bola</h2>
+            <p>
+                Di sini Anda dapat menikmati siaran langsung pertandingan sepak bola dari berbagai liga dan kompetisi terkenal. Pastikan koneksi internet Anda stabil untuk pengalaman menonton yang optimal. Jangan lupa untuk selalu cek jadwal pertandingan dan nikmati pertandingan favorit Anda kapan saja dan di mana saja.
+            </p>
+        </section>
+
+        <main>
+            <div class="streaming-and-matches">
+                <section class="live-stream">
+                    <h2>Streaming Saat Ini</h2>
+                    <div class="video-container">
+                        <iframe id="liveStream" allowfullscreen></iframe>
+                    </div>
+                </section>
+
+                <section class="other-matches">
+                    <h2>Pertandingan Lain</h2>
+                    <div class="match-box liga1">
+                        <h3>Liga 1</h3>
+                        <ul>
+                            <li>Tim A vs Tim B - 20:00</li>
+                            <li>Tim C vs Tim D - 22:00</li>
+                        </ul>
+                    </div>
+                    <div class="match-box liga2">
+                        <h3>Liga 2</h3>
+                        <ul>
+                            <li>Tim E vs Tim F - 19:00</li>
+                            <li>Tim G vs Tim H - 21:00</li>
+                        </ul>
+                    </div>
+                    <div class="match-box liga-champions">
+                        <h3>Liga Champions</h3>
+                        <ul>
+                            <li>Tim I vs Tim J - 23:00</li>
+                            <li>Tim K vs Tim L - 01:00</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Live Streaming Bola. Semua hak dilindungi.</p>
+        </footer>
     </div>
-    <div class="banner">
-      Nikmati Siaran Langsung Pertandingan Sepak Bola Favorit Anda!
-    </div>
-  </header>
 
-  <!-- Artikel di bawah banner -->
-  <section class="article-section">
-    <h2>Selamat Datang di Situs Streaming Bola</h2>
-    <p>
-      Di sini Anda dapat menikmati siaran langsung pertandingan sepak bola dari berbagai liga dan kompetisi terkenal. Pastikan koneksi internet Anda stabil untuk pengalaman menonton yang optimal. Jangan lupa untuk selalu cek jadwal pertandingan dan nikmati pertandingan favorit Anda kapan saja dan di mana saja.
-    </p>
-  </section>
-
-  <!-- Main content -->
-  <main>
-    <section class="live-stream">
-      <h2>Streaming Saat Ini</h2>
-      <div class="video-container">
-        <iframe id="liveStream" allowfullscreen></iframe>
-      </div>
-    </section>
-
-    <section class="other-matches">
-      <h2>Pertandingan Lain</h2>
-      <div class="match-box liga1">
-        <h3>Liga 1</h3>
-        <ul>
-          <li>Tim A vs Tim B - 20:00</li>
-          <li>Tim C vs Tim D - 22:00</li>
-        </ul>
-      </div>
-      <div class="match-box liga2">
-        <h3>Liga 2</h3>
-        <ul>
-          <li>Tim E vs Tim F - 19:00</li>
-          <li>Tim G vs Tim H - 21:00</li>
-        </ul>
-      </div>
-      <div class="match-box liga-champions">
-        <h3>Liga Champions</h3>
-        <ul>
-          <li>Tim I vs Tim J - 23:00</li>
-          <li>Tim K vs Tim L - 01:00</li>
-        </ul>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Live Streaming Bola. Semua hak dilindungi.</p>
-  </footer>
-</div>
-
-<script>
-  // Ganti dengan URL streaming Anda
-  const liveStreamUrl = "https://t.ly/streamingku";
-  document.getElementById('liveStream').src = liveStreamUrl;
-</script>
+    <script>
+        const liveStreamUrl = "https://t.ly/streamingku";
+        document.getElementById('liveStream').src = liveStreamUrl;
+    </script>
 </body>
 </html>
