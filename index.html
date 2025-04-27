@@ -34,6 +34,13 @@
             border: none;
         }
 
+        .team-info {
+            margin-top: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
         .other-matches {
             display: flex;
             flex-wrap: wrap;
@@ -97,6 +104,7 @@
             <div class="video-container">
                 <iframe id="liveStream" allowfullscreen></iframe>
             </div>
+            <div class="team-info" id="teamInfo">Tim A vs Tim B</div>
         </section>
 
         <section class="other-matches">
@@ -104,22 +112,22 @@
             <div class="match-box liga1">
                 <h3>Liga 1</h3>
                 <ul>
-                    <li>Tim A vs Tim B - 20:00</li>
-                    <li>Tim C vs Tim D - 22:00</li>
+                    <li>Tim C vs Tim D - 20:00</li>
+                    <li>Tim E vs Tim F - 22:00</li>
                 </ul>
             </div>
             <div class="match-box liga2">
                 <h3>Liga 2</h3>
                 <ul>
-                    <li>Tim E vs Tim F - 19:00</li>
-                    <li>Tim G vs Tim H - 21:00</li>
+                    <li>Tim G vs Tim H - 19:00</li>
+                    <li>Tim I vs Tim J - 21:00</li>
                 </ul>
             </div>
             <div class="match-box liga-champions">
                 <h3>Liga Champions</h3>
                 <ul>
-                    <li>Tim I vs Tim J - 23:00</li>
-                    <li>Tim K vs Tim L - 01:00</li>
+                    <li>Tim K vs Tim L - 23:00</li>
+                    <li>Tim M vs Tim N - 01:00</li>
                 </ul>
             </div>
         </section>
@@ -133,8 +141,5 @@
         // Ganti dengan URL streaming Anda
         const liveStreamUrl = "https://www.youtube.com/embed/live_stream?channel=CHANNEL_ID";
 
-        // Mengatur sumber iframe setelah halaman dimuat
-        document.getElementById('liveStream').src = liveStreamUrl;
-    </script>
-</body>
-</html>
+        // Mengatur sumber iframe dan informasi tim setelah halaman dimuat
+        document.getElementById('liveStream').src
