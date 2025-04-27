@@ -1,200 +1,212 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Live Streaming Bola</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Streaming Bola</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            line-height: 1.6;
+        }
 
-    header {
-      background-color: #222;
-      color: #fff;
-      padding: 20px 10px;
-      text-align: center;
-    }
+        header {
+            background-color: #222;
+            color: #fff;
+            padding: 20px 10px;
+            text-align: center;
+            position: relative;
+        }
 
-    .logo {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 10px;
-    }
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+        }
 
-    .logo img {
-      max-height: 80px;
-      margin-right: 15px;
-    }
+        .logo img {
+            max-height: 80px;
+            margin-right: 15px;
+        }
 
-    .banner {
-      background-color: #ffcc00;
-      padding: 20px;
-      font-size: 24px;
-      font-weight: bold;
-      border-radius: 8px;
-      margin: 0 auto;
-      display: inline-block;
-    }
+        .banner {
+            background-color: #ffcc00;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            border-radius: 8px;
+        }
 
-    /* Layout 2 kolom */
-    .main-content {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      margin: 20px auto;
-      padding: 0 10px;
-      max-width: 1200px;
-      gap: 20px;
-    }
+        .article-section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
 
-    .matches-list {
-      flex: 1;
-      background-color: #fff;
-      padding: 15px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
+        main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-    .matches-list h2 {
-      margin-top: 0;
-      font-size: 20px;
-    }
+        /* Tambahan baru untuk membuat streaming dan list sejajar */
+        .streaming-and-matches {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
 
-    .match-box {
-      background: #f9f9f9;
-      border-left: 5px solid #2196F3;
-      padding: 10px;
-      margin-bottom: 15px;
-      border-radius: 5px;
-    }
+        .live-stream, .other-matches {
+            flex: 1 1 50%;
+        }
 
-    .match-box.liga2 {
-      border-left-color: #FF9800;
-    }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
+            border-radius: 8px;
+        }
 
-    .match-box.liga-champions {
-      border-left-color: #4CAF50;
-    }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 8px;
+        }
 
-    .live-stream {
-      flex: 2;
-      background: #fff;
-      padding: 15px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      text-align: center;
-    }
+        .other-matches {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
 
-    .live-stream h2 {
-      margin-top: 0;
-      font-size: 20px;
-    }
+        .match-box {
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 15px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
 
-    .video-container {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
-      margin-top: 15px;
-      border-radius: 8px;
-      background: #000;
-    }
+        .match-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
 
-    .video-container iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-      border-radius: 8px;
-    }
+        h2, h3 {
+            color: #333;
+        }
 
-    footer {
-      text-align: center;
-      padding: 15px 10px;
-      background-color: #222;
-      color: #fff;
-      margin-top: 30px;
-    }
+        .liga1 {
+            background-color: #e7f3fe;
+            border-left: 5px solid #2196F3;
+        }
 
-    /* Responsiveness */
-    @media (max-width: 768px) {
-      .main-content {
-        flex-direction: column;
-      }
-    }
-  </style>
+        .liga2 {
+            background-color: #fff3e7;
+            border-left: 5px solid #FF9800;
+        }
+
+        .liga-champions {
+            background-color: #e8f5e9;
+            border-left: 5px solid #4CAF50;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px 10px;
+            background-color: #222;
+            color: #fff;
+            margin-top: 30px;
+        }
+
+        /* Responsive agar di HP tidak tabrakan */
+        @media (max-width: 768px) {
+            .streaming-and-matches {
+                flex-direction: column;
+            }
+            .live-stream, .other-matches {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <div class="logo">
+            <img src="https://i.ibb.co/W4ks0RV5/fifa-removebg-preview.png" alt="Logo" />
+            <h1>Live Streaming Bola</h1>
+        </div>
+        <div class="banner">
+            Nikmati Siaran Langsung Pertandingan Sepak Bola Favorit Anda!
+        </div>
+    </header>
 
-  <!-- Header -->
-  <header>
-    <div class="logo">
-      <img src="https://i.ibb.co/W4ks0RV5/fifa-removebg-preview.png" alt="Logo" />
-      <h1>Live Streaming Bola</h1>
-    </div>
-    <div class="banner">
-      Nikmati Siaran Langsung Pertandingan Sepak Bola Favorit Anda!
-    </div>
-  </header>
+    <section class="article-section">
+        <h2>Selamat Datang di Situs Streaming Bola</h2>
+        <p>
+            Di sini Anda dapat menikmati siaran langsung pertandingan sepak bola dari berbagai liga dan kompetisi terkenal. Pastikan koneksi internet Anda stabil untuk pengalaman menonton yang optimal. Jangan lupa untuk selalu cek jadwal pertandingan dan nikmati pertandingan favorit Anda kapan saja dan di mana saja.
+        </p>
+    </section>
 
-  <!-- Main 2 kolom -->
-  <div class="main-content">
+    <main>
+        <div class="streaming-and-matches">
+            <section class="live-stream">
+                <h2>Streaming Saat Ini</h2>
+                <div class="video-container">
+                    <iframe id="liveStream" allowfullscreen></iframe>
+                </div>
+            </section>
 
-    <!-- Daftar pertandingan -->
-    <div class="matches-list">
-      <h2>Pertandingan Lain</h2>
+            <section class="other-matches">
+                <h2>Pertandingan Lain</h2>
+                <div class="match-box liga1">
+                    <h3>Liga 1</h3>
+                    <ul>
+                        <li>Tim A vs Tim B - 20:00</li>
+                        <li>Tim C vs Tim D - 22:00</li>
+                    </ul>
+                </div>
+                <div class="match-box liga2">
+                    <h3>Liga 2</h3>
+                    <ul>
+                        <li>Tim E vs Tim F - 19:00</li>
+                        <li>Tim G vs Tim H - 21:00</li>
+                    </ul>
+                </div>
+                <div class="match-box liga-champions">
+                    <h3>Liga Champions</h3>
+                    <ul>
+                        <li>Tim I vs Tim J - 23:00</li>
+                        <li>Tim K vs Tim L - 01:00</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </main>
 
-      <div class="match-box liga1">
-        <h3>Liga 1</h3>
-        <ul>
-          <li>Tim A vs Tim B - 20:00</li>
-          <li>Tim C vs Tim D - 22:00</li>
-        </ul>
-      </div>
+    <footer>
+        <p>&copy; 2025 Live Streaming Bola. Semua hak dilindungi.</p>
+    </footer>
 
-      <div class="match-box liga2">
-        <h3>Liga 2</h3>
-        <ul>
-          <li>Tim E vs Tim F - 19:00</li>
-          <li>Tim G vs Tim H - 21:00</li>
-        </ul>
-      </div>
-
-      <div class="match-box liga-champions">
-        <h3>Liga Champions</h3>
-        <ul>
-          <li>Tim I vs Tim J - 23:00</li>
-          <li>Tim K vs Tim L - 01:00</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Streaming -->
-    <div class="live-stream">
-      <h2>Streaming Saat Ini</h2>
-      <div class="video-container">
-        <iframe id="liveStream" allowfullscreen></iframe>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Live Streaming Bola. Semua hak dilindungi.</p>
-  </footer>
-
-  <script>
-    const liveStreamUrl = "https://t.ly/streamingku";
-    document.getElementById('liveStream').src = liveStreamUrl;
-  </script>
-  
+    <script>
+        const liveStreamUrl = "https://t.ly/streamingku";
+        document.getElementById('liveStream').src = liveStreamUrl;
+    </script>
 </body>
 </html>
