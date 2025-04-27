@@ -82,6 +82,7 @@
             max-width: 100%;
             background: #000;
             border-radius: 8px;
+            cursor: pointer; /* Menambahkan pointer saat mengarahkan kursor */
         }
 
         .video-container iframe {
@@ -174,7 +175,7 @@
             <div class="streaming-and-matches">
                 <section class="live-stream">
                     <h2>Streaming Saat Ini</h2>
-                    <div class="video-container">
+                    <div class="video-container" onclick="openFullscreen()">
                         <iframe id="liveStream" allowfullscreen></iframe>
                     </div>
                 </section>
@@ -214,6 +215,19 @@
     <script>
         const liveStreamUrl = "https://t.ly/streamingku";
         document.getElementById('liveStream').src = liveStreamUrl;
+
+        function openFullscreen() {
+            const iframe = document.getElementById('liveStream');
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+            } else if (iframe.mozRequestFullScreen) { // Firefox
+                iframe.mozRequestFullScreen();
+            } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari and Opera
+                iframe.webkitRequestFullscreen();
+            } else if (iframe.msRequestFullscreen) { // IE/Edge
+                iframe.msRequestFullscreen();
+            }
+        }
     </script>
 </body>
 </html>
