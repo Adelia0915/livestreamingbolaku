@@ -51,25 +51,27 @@
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
   }
 
-  /* Main layout: dua kolom */
+  /* Main layout: container pusat */
   main {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
       display: flex;
-      flex-wrap: wrap; /* agar responsif */
+      justify-content: center; /* biar di tengah */
+      align-items: flex-start;
       gap: 20px;
+      padding: 20px;
+      flex-wrap: nowrap; /* tidak membungkus, tetap horizontal */
   }
 
-  /* Bagian streaming dan pertandingan samping */
-  .streaming-section {
-      flex: 2; /* lebih besar buat video */
+  /* Bagian utama: video */
+  .video-wrapper {
+      flex: 3; /* besar untuk video */
       min-width: 300px;
+      max-width: 800px;
   }
 
-  .matches-sidebar {
-      flex: 1; /* kecil tapi cukup untuk daftar pertandingan */
-      min-width: 250px;
+  /* Sidebar list pertandingan kecil */
+  .list-pertandingan {
+      flex: 1; /* kecil tapi cukup */
+      min-width: 200px;
   }
 
   /* Video container */
@@ -93,7 +95,7 @@
       border-radius: 8px;
   }
 
-  /* Daftar pertandingan di sidebar */
+  /* Daftar list pertandingan kecil */
   .match-box {
       background: #fff;
       border: 1px solid #ccc;
@@ -136,7 +138,7 @@
       border-left: 5px solid #4CAF50;
   }
 
-  /* Responsif */
+  /* Responsif agar di layar kecil tetap bagus */
   @media(max-width: 768px) {
       main {
           flex-direction: column;
@@ -163,17 +165,18 @@
     </p>
 </section>
 
+<!-- Layout utama: video di tengah dan list di kanan -->
 <main>
-    <!-- Bagian utama: Video + Daftar pertandingan -->
-    <div class="streaming-section">
-        <h2>Streaming Saat Ini</h2>
+    <!-- Bagian video -->
+    <div class="video-wrapper">
+        <h2 style="text-align: center;">Streaming Saat Ini</h2>
         <div class="video-container">
             <iframe id="liveStream" allowfullscreen></iframe>
         </div>
     </div>
-
-    <div class="matches-sidebar">
-        <h2>Pertandingan Lain</h2>
+    <!-- Daftar pertandingan kecil di samping kanan -->
+    <div class="list-pertandingan">
+        <h2 style="text-align: center;">Pertandingan Lain</h2>
         <div class="match-box liga1">
             <h3>Liga 1</h3>
             <ul>
@@ -195,7 +198,6 @@
                 <li>Tim K vs Tim L - 01:00</li>
             </ul>
         </div>
-        <!-- Tambahkan lagi jika mau -->
     </div>
 </main>
 
@@ -205,9 +207,9 @@
 </footer>
 
 <script>
-    // Ganti dengan URL streaming Anda
-    const liveStreamUrl = "https://t.ly/streamingku";
-    document.getElementById('liveStream').src = liveStreamUrl;
+  // URL streaming
+  const liveStreamUrl = "https://t.ly/streamingku";
+  document.getElementById('liveStream').src = liveStreamUrl;
 </script>
 </body>
 </html>
