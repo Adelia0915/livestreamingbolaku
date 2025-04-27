@@ -82,7 +82,6 @@
             max-width: 100%;
             background: #000;
             border-radius: 8px;
-            cursor: pointer; /* Menambahkan pointer saat mengarahkan kursor */
         }
 
         .video-container iframe {
@@ -93,6 +92,7 @@
             height: 100%;
             border: none;
             border-radius: 8px;
+            cursor: pointer; /* Menunjukkan bahwa video bisa diklik */
         }
 
         .other-matches {
@@ -175,7 +175,7 @@
             <div class="streaming-and-matches">
                 <section class="live-stream">
                     <h2>Streaming Saat Ini</h2>
-                    <div class="video-container" onclick="openFullscreen()">
+                    <div class="video-container">
                         <iframe id="liveStream" allowfullscreen></iframe>
                     </div>
                 </section>
@@ -214,20 +214,24 @@
 
     <script>
         const liveStreamUrl = "https://t.ly/streamingku";
-        document.getElementById('liveStream').src = liveStreamUrl;
+        const iframe = document.getElementById('liveStream');
+        iframe.src = liveStreamUrl;
 
-        function openFullscreen() {
-            const iframe = document.getElementById('liveStream');
+        // Fungsi untuk membuka layar penuh
+        function openFullScreen() {
             if (iframe.requestFullscreen) {
                 iframe.requestFullscreen();
             } else if (iframe.mozRequestFullScreen) { // Firefox
                 iframe.mozRequestFullScreen();
-            } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari and Opera
+            } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari, Opera
                 iframe.webkitRequestFullscreen();
             } else if (iframe.msRequestFullscreen) { // IE/Edge
                 iframe.msRequestFullscreen();
             }
         }
+
+        // Tambahkan event listener pada iframe untuk mendeteksi klik
+        iframe.addEventListener('click', openFullScreen);
     </script>
 </body>
 </html>
