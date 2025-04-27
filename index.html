@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Live Streaming Bola</title>
     <style>
         body {
@@ -10,19 +10,58 @@
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
+            line-height: 1.6;
         }
 
+        /* Header utama dengan logo dan banner */
         header {
-            background: #333;
+            background-color: #222;
             color: #fff;
-            padding: 10px 0;
+            padding: 20px 10px;
             text-align: center;
+            position: relative;
         }
 
+        /* Logo di atas banner */
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .logo img {
+            max-height: 80px;
+            margin-right: 15px;
+        }
+
+        /* Banner besar di bawah logo */
+        .banner {
+            background-color: #ffcc00;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            border-radius: 8px;
+        }
+
+        /* Artikel di bawah banner */
+        .article-section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        /* Main content */
         main {
             padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
+        /* Streaming video container */
         .video-container {
             position: relative;
             padding-bottom: 56.25%; /* Rasio 16:9 */
@@ -30,7 +69,8 @@
             overflow: hidden;
             max-width: 100%;
             background: #000;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
         }
 
         .video-container iframe {
@@ -40,12 +80,15 @@
             width: 100%;
             height: 100%;
             border: none;
+            border-radius: 8px;
         }
 
+        /* Pertandingan lain */
         .other-matches {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
+            gap: 15px;
         }
 
         .match-box {
@@ -53,21 +96,21 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             padding: 15px;
-            margin: 10px;
             flex: 1 1 30%;
-            transition: transform 0.2s;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         .match-box:hover {
             transform: scale(1.05);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
         h2, h3 {
             color: #333;
         }
 
+        /* Warna khusus untuk liga */
         .liga1 {
             background-color: #e7f3fe;
             border-left: 5px solid #2196F3;
@@ -83,23 +126,49 @@
             border-left: 5px solid #4CAF50;
         }
 
+        /* Footer */
         footer {
             text-align: center;
-            padding: 10px 0;
-            background: #333;
+            padding: 15px 10px;
+            background-color: #222;
             color: #fff;
-            position: relative;
-            bottom: 0;
-            width: 100%;
+            margin-top: 30px;
+        }
+
+        /* Responsiveness artikel dan footer */
+        @media (max-width: 768px) {
+            .other-matches {
+                flex-direction: column;
+            }
+            .match-box {
+                flex: 1 1 100%;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Header dengan logo dan banner -->
     <header>
-        <h1>Live Streaming Bola</h1>
+        <div class="logo">
+            <img src="https://via.placeholder.com/80x80.png?text=Logo" alt="Logo" />
+            <h1>Live Streaming Bola</h1>
+        </div>
+        <div class="banner">
+            Nikmati Siaran Langsung Pertandingan Sepak Bola Favorit Anda!
+        </div>
     </header>
-    
+
+    <!-- Artikel di bawah banner -->
+    <section class="article-section">
+        <h2>Selamat Datang di Situs Streaming Bola</h2>
+        <p>
+            Di sini Anda dapat menikmati siaran langsung pertandingan sepak bola dari berbagai liga dan kompetisi terkenal. Pastikan koneksi internet Anda stabil untuk pengalaman menonton yang optimal. Jangan lupa untuk selalu cek jadwal pertandingan dan nikmati pertandingan favorit Anda kapan saja dan di mana saja.
+        </p>
+    </section>
+
+    <!-- Main content utama -->
     <main>
+        <!-- Streaming live -->
         <section class="live-stream">
             <h2>Streaming Saat Ini</h2>
             <div class="video-container">
@@ -107,6 +176,7 @@
             </div>
         </section>
 
+        <!-- Pertandingan lain -->
         <section class="other-matches">
             <h2>Pertandingan Lain</h2>
             <div class="match-box liga1">
@@ -133,8 +203,9 @@
         </section>
     </main>
 
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2023 Live Streaming Bola. Semua hak dilindungi.</p>
+        <p>&copy; 2025 Live Streaming Bola. Semua hak dilindungi.</p>
     </footer>
 
     <script>
