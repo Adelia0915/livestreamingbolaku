@@ -9,12 +9,19 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background: url('https://i.ibb.co/qMQJfZxc/bola-lada.jpg') no-repeat center center fixed;
+            background-size: cover;
             line-height: 1.6;
         }
 
+        /* Tambahkan lapisan transparan */
+        .overlay {
+            background-color: rgba(255, 255, 255, 0.8);
+            min-height: 100vh;
+        }
+
         header {
-            background-color: #222;
+            background-color: rgba(34, 34, 34, 0.8);
             color: #fff;
             padding: 20px 10px;
             text-align: center;
@@ -34,7 +41,7 @@
         }
 
         .banner {
-            background-color: #ffcc00;
+            background-color: rgba(255, 204, 0, 0.9);
             padding: 20px;
             font-size: 24px;
             font-weight: bold;
@@ -45,9 +52,9 @@
             max-width: 800px;
             margin: 20px auto;
             padding: 15px;
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.85);
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
         }
 
         main {
@@ -56,7 +63,6 @@
             margin: 0 auto;
         }
 
-        /* Tambahan baru untuk membuat streaming dan list sejajar */
         .streaming-and-matches {
             display: flex;
             gap: 20px;
@@ -95,7 +101,7 @@
         }
 
         .match-box {
-            background: #fff;
+            background: rgba(255, 255, 255, 0.85);
             border: 1px solid #ccc;
             border-radius: 5px;
             padding: 15px;
@@ -105,7 +111,7 @@
 
         .match-box:hover {
             transform: scale(1.05);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
 
         h2, h3 {
@@ -113,29 +119,28 @@
         }
 
         .liga1 {
-            background-color: #e7f3fe;
+            background-color: rgba(231, 243, 254, 0.9);
             border-left: 5px solid #2196F3;
         }
 
         .liga2 {
-            background-color: #fff3e7;
+            background-color: rgba(255, 243, 231, 0.9);
             border-left: 5px solid #FF9800;
         }
 
         .liga-champions {
-            background-color: #e8f5e9;
+            background-color: rgba(232, 245, 233, 0.9);
             border-left: 5px solid #4CAF50;
         }
 
         footer {
             text-align: center;
             padding: 15px 10px;
-            background-color: #222;
+            background-color: rgba(34, 34, 34, 0.8);
             color: #fff;
             margin-top: 30px;
         }
 
-        /* Responsive agar di HP tidak tabrakan */
         @media (max-width: 768px) {
             .streaming-and-matches {
                 flex-direction: column;
@@ -147,62 +152,64 @@
     </style>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="https://i.ibb.co/W4ks0RV5/fifa-removebg-preview.png" alt="Logo" />
-            <h1>Live Streaming Bola</h1>
-        </div>
-        <div class="banner">
-            Nikmati Siaran Langsung Pertandingan Sepak Bola Favorit Anda!
-        </div>
-    </header>
+    <div class="overlay">
+        <header>
+            <div class="logo">
+                <img src="https://i.ibb.co/W4ks0RV5/fifa-removebg-preview.png" alt="Logo" />
+                <h1>Live Streaming Bola</h1>
+            </div>
+            <div class="banner">
+                Nikmati Siaran Langsung Pertandingan Sepak Bola Favorit Anda!
+            </div>
+        </header>
 
-    <section class="article-section">
-        <h2>Selamat Datang di Situs Streaming Bola</h2>
-        <p>
-            Di sini Anda dapat menikmati siaran langsung pertandingan sepak bola dari berbagai liga dan kompetisi terkenal. Pastikan koneksi internet Anda stabil untuk pengalaman menonton yang optimal. Jangan lupa untuk selalu cek jadwal pertandingan dan nikmati pertandingan favorit Anda kapan saja dan di mana saja.
-        </p>
-    </section>
+        <section class="article-section">
+            <h2>Selamat Datang di Situs Streaming Bola</h2>
+            <p>
+                Di sini Anda dapat menikmati siaran langsung pertandingan sepak bola dari berbagai liga dan kompetisi terkenal. Pastikan koneksi internet Anda stabil untuk pengalaman menonton yang optimal. Jangan lupa untuk selalu cek jadwal pertandingan dan nikmati pertandingan favorit Anda kapan saja dan di mana saja.
+            </p>
+        </section>
 
-    <main>
-        <div class="streaming-and-matches">
-            <section class="live-stream">
-                <h2>Streaming Saat Ini</h2>
-                <div class="video-container">
-                    <iframe id="liveStream" allowfullscreen></iframe>
-                </div>
-            </section>
+        <main>
+            <div class="streaming-and-matches">
+                <section class="live-stream">
+                    <h2>Streaming Saat Ini</h2>
+                    <div class="video-container">
+                        <iframe id="liveStream" allowfullscreen></iframe>
+                    </div>
+                </section>
 
-            <section class="other-matches">
-                <h2>Pertandingan Lain</h2>
-                <div class="match-box liga1">
-                    <h3>Liga 1</h3>
-                    <ul>
-                        <li>Tim A vs Tim B - 20:00</li>
-                        <li>Tim C vs Tim D - 22:00</li>
-                    </ul>
-                </div>
-                <div class="match-box liga2">
-                    <h3>Liga 2</h3>
-                    <ul>
-                        <li>Tim E vs Tim F - 19:00</li>
-                        <li>Tim G vs Tim H - 21:00</li>
-                    </ul>
-                </div>
-                <div class="match-box liga-champions">
-                    <h3>Liga Champions</h3>
-                    <ul>
-                        <li>Tim I vs Tim J - 23:00</li>
-                        <li>Tim K vs Tim L - 01:00</li>
-                    </ul>
-                </div>
-            </section>
-        </div>
-    </main>
+                <section class="other-matches">
+                    <h2>Pertandingan Lain</h2>
+                    <div class="match-box liga1">
+                        <h3>Liga 1</h3>
+                        <ul>
+                            <li>Tim A vs Tim B - 20:00</li>
+                            <li>Tim C vs Tim D - 22:00</li>
+                        </ul>
+                    </div>
+                    <div class="match-box liga2">
+                        <h3>Liga 2</h3>
+                        <ul>
+                            <li>Tim E vs Tim F - 19:00</li>
+                            <li>Tim G vs Tim H - 21:00</li>
+                        </ul>
+                    </div>
+                    <div class="match-box liga-champions">
+                        <h3>Liga Champions</h3>
+                        <ul>
+                            <li>Tim I vs Tim J - 23:00</li>
+                            <li>Tim K vs Tim L - 01:00</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </main>
 
-    <footer>
-        <p>&copy; 2025 Live Streaming Bola. Semua hak dilindungi.</p>
-    </footer>
+        <footer>
+            <p>&copy; 2025 Live Streaming Bola. Semua hak dilindungi.</p>
+        </footer>
+    </div>
 
     <script>
         const liveStreamUrl = "https://t.ly/streamingku";
