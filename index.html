@@ -1,215 +1,219 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Live Streaming Bola</title>
-<style>
-  body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
-      line-height: 1.6;
-  }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Streaming Bola</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            line-height: 1.6;
+        }
 
-  /* Header dengan logo dan banner */
-  header {
-      background-color: #222;
-      color: #fff;
-      padding: 20px 10px;
-      text-align: center;
-  }
+        /* Header utama dengan logo dan banner */
+        header {
+            background-color: #222;
+            color: #fff;
+            padding: 20px 10px;
+            text-align: center;
+            position: relative;
+        }
 
-  .logo {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 10px;
-  }
+        /* Logo di atas banner */
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+        }
 
-  .logo img {
-      max-height: 80px;
-      margin-right: 15px;
-  }
+        .logo img {
+            max-height: 80px;
+            margin-right: 15px;
+        }
 
-  .banner {
-      background-color: #ffcc00;
-      padding: 20px;
-      font-size: 24px;
-      font-weight: bold;
-      border-radius: 8px;
-  }
+        /* Banner besar di bawah logo */
+        .banner {
+            background-color: #ffcc00;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            border-radius: 8px;
+        }
 
-  /* Artikel di bawah banner */
-  .article-section {
-      max-width: 800px;
-      margin: 20px auto;
-      padding: 15px;
-      background-color: #fff;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  }
+        /* Artikel di bawah banner */
+        .article-section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
 
-  /* Main layout: container pusat */
-  main {
-      display: flex;
-      justify-content: center; /* biar di tengah */
-      align-items: flex-start;
-      gap: 20px;
-      padding: 20px;
-      flex-wrap: nowrap; /* tidak membungkus, tetap horizontal */
-  }
+        /* Main content */
+        main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-  /* Bagian utama: video */
-  .video-wrapper {
-      flex: 3; /* besar untuk video */
-      min-width: 300px;
-      max-width: 800px;
-  }
+        /* Streaming video container */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* Rasio 16:9 */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
 
-  /* Sidebar list pertandingan kecil */
-  .list-pertandingan {
-      flex: 1; /* kecil tapi cukup */
-      min-width: 200px;
-  }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 8px;
+        }
 
-  /* Video container */
-  .video-container {
-      position: relative;
-      padding-bottom: 56.25%; /* Rasio 16:9 */
-      height: 0;
-      overflow: hidden;
-      background: #000;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  }
+        /* Pertandingan lain */
+        .other-matches {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 15px;
+        }
 
-  .video-container iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-      border-radius: 8px;
-  }
+        .match-box {
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 15px;
+            flex: 1 1 30%;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
 
-  /* Daftar list pertandingan kecil */
-  .match-box {
-      background: #fff;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      padding: 10px;
-      margin-bottom: 15px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  }
+        .match-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
 
-  .match-box h3 {
-      margin-top: 0;
-      font-size: 1.2em;
-      margin-bottom: 10px;
-  }
+        h2, h3 {
+            color: #333;
+        }
 
-  ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-  }
+        /* Warna khusus untuk liga */
+        .liga1 {
+            background-color: #e7f3fe;
+            border-left: 5px solid #2196F3;
+        }
 
-  li {
-      padding: 5px 0;
-      border-bottom: 1px solid #eee;
-  }
+        .liga2 {
+            background-color: #fff3e7;
+            border-left: 5px solid #FF9800;
+        }
 
-  /* Warna khusus untuk liga */
-  .liga1 {
-      background-color: #e7f3fe;
-      border-left: 5px solid #2196F3;
-  }
+        .liga-champions {
+            background-color: #e8f5e9;
+            border-left: 5px solid #4CAF50;
+        }
 
-  .liga2 {
-      background-color: #fff3e7;
-      border-left: 5px solid #FF9800;
-  }
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 15px 10px;
+            background-color: #222;
+            color: #fff;
+            margin-top: 30px;
+        }
 
-  .liga-champions {
-      background-color: #e8f5e9;
-      border-left: 5px solid #4CAF50;
-  }
-
-  /* Responsif agar di layar kecil tetap bagus */
-  @media(max-width: 768px) {
-      main {
-          flex-direction: column;
-      }
-  }
-</style>
+        /* Responsiveness artikel dan footer */
+        @media (max-width: 768px) {
+            .other-matches {
+                flex-direction: column;
+            }
+            .match-box {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-<header>
-    <div class="logo">
-        <img src="https://via.placeholder.com/80x80.png?text=Logo" alt="Logo" />
-        <h1>Live Streaming Bola</h1>
-    </div>
-    <div class="banner">
-        Nikmati Siaran Langsung Pertandingan Sepak Bola Favorit Anda!
-    </div>
-</header>
-
-<!-- Artikel di bawah banner -->
-<section class="article-section">
-    <h2>Selamat Datang di Situs Streaming Bola</h2>
-    <p>
-        Di sini Anda dapat menikmati siaran langsung pertandingan sepak bola dari berbagai liga dan kompetisi terkenal. Pastikan koneksi internet Anda stabil untuk pengalaman menonton yang optimal. Jangan lupa untuk selalu cek jadwal pertandingan dan nikmati pertandingan favorit Anda kapan saja dan di mana saja.
-    </p>
-</section>
-
-<!-- Layout utama: video di tengah dan list di kanan -->
-<main>
-    <!-- Bagian video -->
-    <div class="video-wrapper">
-        <h2 style="text-align: center;">Streaming Saat Ini</h2>
-        <div class="video-container">
-            <iframe id="liveStream" allowfullscreen></iframe>
+    <!-- Header dengan logo dan banner -->
+    <header>
+        <div class="logo">
+            <img src="https://i.ibb.co/W4ks0RV5/fifa-removebg-preview.png" alt="Logo" />
+            <h1>Live Streaming Bola</h1>
         </div>
-    </div>
-    <!-- Daftar pertandingan kecil di samping kanan -->
-    <div class="list-pertandingan">
-        <h2 style="text-align: center;">Pertandingan Lain</h2>
-        <div class="match-box liga1">
-            <h3>Liga 1</h3>
-            <ul>
-                <li>Tim A vs Tim B - 20:00</li>
-                <li>Tim C vs Tim D - 22:00</li>
-            </ul>
+        <div class="banner">
+            Nikmati Siaran Langsung Pertandingan Sepak Bola Favorit Anda!
         </div>
-        <div class="match-box liga2">
-            <h3>Liga 2</h3>
-            <ul>
-                <li>Tim E vs Tim F - 19:00</li>
-                <li>Tim G vs Tim H - 21:00</li>
-            </ul>
-        </div>
-        <div class="match-box liga-champions">
-            <h3>Liga Champions</h3>
-            <ul>
-                <li>Tim I vs Tim J - 23:00</li>
-                <li>Tim K vs Tim L - 01:00</li>
-            </ul>
-        </div>
-    </div>
-</main>
+    </header>
 
-<!-- Footer -->
-<footer>
-    <p>&copy; 2025 Live Streaming Bola. Semua hak dilindungi.</p>
-</footer>
+    <!-- Artikel di bawah banner -->
+    <section class="article-section">
+        <h2>Selamat Datang di Situs Streaming Bola</h2>
+        <p>
+            Di sini Anda dapat menikmati siaran langsung pertandingan sepak bola dari berbagai liga dan kompetisi terkenal. Pastikan koneksi internet Anda stabil untuk pengalaman menonton yang optimal. Jangan lupa untuk selalu cek jadwal pertandingan dan nikmati pertandingan favorit Anda kapan saja dan di mana saja.
+        </p>
+    </section>
 
-<script>
-  // URL streaming
-  const liveStreamUrl = "https://t.ly/streamingku";
-  document.getElementById('liveStream').src = liveStreamUrl;
-</script>
+    <!-- Main content utama -->
+    <main>
+        <!-- Streaming live -->
+        <section class="live-stream">
+            <h2>Streaming Saat Ini</h2>
+            <div class="video-container">
+                <iframe id="liveStream" allowfullscreen></iframe>
+            </div>
+        </section>
+
+        <!-- Pertandingan lain -->
+        <section class="other-matches">
+            <h2>Pertandingan Lain</h2>
+            <div class="match-box liga1">
+                <h3>Liga 1</h3>
+                <ul>
+                    <li>Tim A vs Tim B - 20:00</li>
+                    <li>Tim C vs Tim D - 22:00</li>
+                </ul>
+            </div>
+            <div class="match-box liga2">
+                <h3>Liga 2</h3>
+                <ul>
+                    <li>Tim E vs Tim F - 19:00</li>
+                    <li>Tim G vs Tim H - 21:00</li>
+                </ul>
+            </div>
+            <div class="match-box liga-champions">
+                <h3>Liga Champions</h3>
+                <ul>
+                    <li>Tim I vs Tim J - 23:00</li>
+                    <li>Tim K vs Tim L - 01:00</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Live Streaming Bola. Semua hak dilindungi.</p>
+    </footer>
+
+    <script>
+        // Ganti dengan URL streaming Anda
+        const liveStreamUrl = "https://t.ly/streamingku";
+
+        // Mengatur sumber iframe setelah halaman dimuat
+        document.getElementById('liveStream').src = liveStreamUrl;
+    </script>
 </body>
 </html>
