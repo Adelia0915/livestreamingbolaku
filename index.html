@@ -92,7 +92,7 @@
             height: 100%;
             border: none;
             border-radius: 8px;
-            cursor: pointer; /* Menunjukkan bahwa video bisa diklik */
+            cursor: pointer;
         }
 
         .other-matches {
@@ -142,6 +142,29 @@
             margin-top: 30px;
         }
 
+        /* BANNER KIRI & KANAN */
+        .banner-left, .banner-right {
+            position: fixed;
+            top: 100px;
+            width: 120px;
+            z-index: 999;
+        }
+
+        .banner-left {
+            left: 10px;
+        }
+
+        .banner-right {
+            right: 10px;
+        }
+
+        .banner-left img, .banner-right img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        /* HILANGKAN BANNER DI HP */
         @media (max-width: 768px) {
             .streaming-and-matches {
                 flex-direction: column;
@@ -149,10 +172,27 @@
             .live-stream, .other-matches {
                 flex: 1 1 100%;
             }
+            .banner-left, .banner-right {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- BANNER KIRI -->
+    <div class="banner-left">
+        <a href="https://link-iklan-kiri.com" target="_blank">
+            <img src="https://via.placeholder.com/120x600?text=Iklan+Kiri" alt="Iklan Kiri">
+        </a>
+    </div>
+
+    <!-- BANNER KANAN -->
+    <div class="banner-right">
+        <a href="https://link-iklan-kanan.com" target="_blank">
+            <img src="https://via.placeholder.com/120x600?text=Iklan+Kanan" alt="Iklan Kanan">
+        </a>
+    </div>
+
     <div class="overlay">
         <header>
             <div class="logo">
@@ -217,7 +257,6 @@
         const iframe = document.getElementById('liveStream');
         iframe.src = liveStreamUrl;
 
-        // Fungsi untuk membuka layar penuh
         function openFullScreen() {
             if (iframe.requestFullscreen) {
                 iframe.requestFullscreen();
@@ -230,7 +269,6 @@
             }
         }
 
-        // Tambahkan event listener pada iframe untuk mendeteksi klik
         iframe.addEventListener('click', openFullScreen);
     </script>
 </body>
