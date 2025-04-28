@@ -142,29 +142,33 @@
         }
 
         /* BANNER KIRI & KANAN */
-        .banner-left, .banner-right {
-            position: fixed;
-            top: 100px;
-            width: 120px;
-            z-index: 999;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 8px;
-            box-shadow: 0 0 8px rgba(0,0,0,0.3);
-        }
+       .banner-left, .banner-right {
+        position: fixed;
+        top: 100px;
+        width: 150px; /* Ukurannya sedikit diperlebar biar proporsional */
+        height: 400px; /* Tinggi 400px sesuai permintaan */
+        z-index: 999;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 8px;
+        box-shadow: 0 0 8px rgba(0,0,0,0.3);
+        overflow: hidden; /* Supaya gambar pas */
+      }
 
         .banner-left {
-            left: 10px;
-        }
+        left: 10px;
+      }
 
         .banner-right {
-            right: 10px;
-        }
+        right: 10px;
+      }
 
-        .banner-left img, .banner-right img {
-            width: 100%;
-            height: auto;
-            border-radius: 0 0 8px 8px;
-        }
+       .banner-left img, .banner-right img {
+        width: 100%;
+        height: 100%; /* Gambar mengisi penuh box */
+        object-fit: cover; /* Gambar menyesuaikan tanpa merusak proporsi */
+        border-radius: 0 0 8px 8px;
+      }
+
 
         .close-btn {
             display: block;
