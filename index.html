@@ -115,22 +115,31 @@
        }
 
         h2, h3 {
-           color: #fff; /* Ubah warna teks menjadi putih agar kontras dengan latar belakang hitam */
+        color: #fff; /* Ubah warna teks judul menjadi putih */
        }
 
-        .liga1 {
-          background-color: rgba(0, 0, 0, 0.85); /* Latar belakang hitam dengan transparansi */
-          border-left: 5px solid #FFD700; /* Bingkai emas */
+       .liga1, .liga2, .liga-champions {
+       background-color: rgba(0, 0, 0, 0.85); /* Latar belakang hitam dengan transparansi */
+       border-left: 5px solid #FFD700; /* Bingkai emas */
       }
 
-        .liga2 {
-         background-color: rgba(0, 0, 0, 0.85); /* Latar belakang hitam dengan transparansi */
-         border-left: 5px solid #FFD700; /* Bingkai emas */
+      .match-box {
+       color: #fff; /* Mengubah warna teks di dalam kotak pertandingan menjadi putih */
+       background: rgba(0, 0, 0, 0.85); /* Latar belakang hitam transparan */
+       border: 1px solid #FFD700; /* Bingkai emas */
+       border-radius: 5px;
+       padding: 15px;
+       transition: transform 0.2s, box-shadow 0.2s;
+       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       }
 
-        .liga-champions {
-        background-color: rgba(0, 0, 0, 0.85); /* Latar belakang hitam dengan transparansi */
-        border-left: 5px solid #FFD700; /* Bingkai emas */
+      .match-box h3, .match-box ul {
+      color: #fff; /* Mengubah teks nama liga dan daftar pertandingan menjadi putih */
+      }
+
+      .match-box:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
       }
         footer {
             text-align: center;
