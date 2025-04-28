@@ -14,7 +14,6 @@
             line-height: 1.6;
         }
 
-        /* Tambahkan lapisan transparan */
         .overlay {
             background-color: rgba(255, 255, 255, 0.8);
             min-height: 100vh;
@@ -148,6 +147,9 @@
             top: 100px;
             width: 120px;
             z-index: 999;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 8px;
+            box-shadow: 0 0 8px rgba(0,0,0,0.3);
         }
 
         .banner-left {
@@ -161,7 +163,20 @@
         .banner-left img, .banner-right img {
             width: 100%;
             height: auto;
-            border-radius: 8px;
+            border-radius: 0 0 8px 8px;
+        }
+
+        .close-btn {
+            display: block;
+            text-align: right;
+            padding: 5px 8px;
+            font-size: 16px;
+            cursor: pointer;
+            color: #555;
+        }
+
+        .close-btn:hover {
+            color: #000;
         }
 
         /* HILANGKAN BANNER DI HP */
@@ -180,14 +195,16 @@
 </head>
 <body>
     <!-- BANNER KIRI -->
-    <div class="banner-left">
+    <div class="banner-left" id="bannerLeft">
+        <span class="close-btn" onclick="document.getElementById('bannerLeft').style.display='none';">✖</span>
         <a href="https://link-iklan-kiri.com" target="_blank">
             <img src="https://via.placeholder.com/120x600?text=Iklan+Kiri" alt="Iklan Kiri">
         </a>
     </div>
 
     <!-- BANNER KANAN -->
-    <div class="banner-right">
+    <div class="banner-right" id="bannerRight">
+        <span class="close-btn" onclick="document.getElementById('bannerRight').style.display='none';">✖</span>
         <a href="https://link-iklan-kanan.com" target="_blank">
             <img src="https://via.placeholder.com/120x600?text=Iklan+Kanan" alt="Iklan Kanan">
         </a>
@@ -260,11 +277,11 @@
         function openFullScreen() {
             if (iframe.requestFullscreen) {
                 iframe.requestFullscreen();
-            } else if (iframe.mozRequestFullScreen) { // Firefox
+            } else if (iframe.mozRequestFullScreen) {
                 iframe.mozRequestFullScreen();
-            } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari, Opera
+            } else if (iframe.webkitRequestFullscreen) {
                 iframe.webkitRequestFullscreen();
-            } else if (iframe.msRequestFullscreen) { // IE/Edge
+            } else if (iframe.msRequestFullscreen) {
                 iframe.msRequestFullscreen();
             }
         }
