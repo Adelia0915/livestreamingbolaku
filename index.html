@@ -25,26 +25,6 @@
             padding: 20px 10px;
             text-align: center;
             position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .club-info {
-            display: flex;
-            align-items: center;
-            margin-right: 20px;
-        }
-
-        .club-logo {
-            max-height: 30px; /* Ukuran logo kecil */
-            margin-right: 10px;
-        }
-
-        .club-name {
-            font-size: 18px;
-            font-weight: bold;
-            color: #fff;
         }
 
         .logo {
@@ -60,15 +40,14 @@
         }
 
         .banner {
-            background-color: rgba(0, 0, 0, 0.8); /* Warna latar hitam semi-transparan */
-            color: white; /* Warna tulisan putih */
-            padding: 20px;
-            font-size: 24px;
-            font-weight: bold;
-            border-radius: 8px;
-            border: 2px solid gold; /* Kalau mau sekalian kasih bingkai emas */
+           background-color: rgba(0, 0, 0, 0.8); /* Warna latar hitam semi-transparan */
+           color: white; /* Warna tulisan putih */
+           padding: 20px;
+           font-size: 24px;
+           font-weight: bold;
+           border-radius: 8px;
+           border: 2px solid gold; /* Kalau mau sekalian kasih bingkai emas */
         }
-
          .article-section {
             max-width: 800px;
             margin: 20px auto;
@@ -161,7 +140,7 @@
 
       .match-box:hover {
       transform: scale(1.05);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
       }
         footer {
             text-align: center;
@@ -199,6 +178,7 @@
         border-radius: 0 0 8px 8px;
       }
 
+
         .close-btn {
             display: block;
             text-align: right;
@@ -227,19 +207,6 @@
     </style>
 </head>
 <body>
-    <div class="overlay">
-        <header>
-            <div class="club-info">
-                <img src="logo-klub.jpg" alt="Logo Klub" class="club-logo" />
-                <span class="club-name">Nama Klub</span>
-            </div>
-            <div class="banner">
-                Streaming Saat Ini
-            </div>
-        </header>
-        <!-- Konten lainnya -->
-    </div>
-</body>
     <!-- BANNER KIRI -->
     <div class="banner-left" id="bannerLeft">
         <span class="close-btn" onclick="document.getElementById('bannerLeft').style.display='none';">✖</span>
